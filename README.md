@@ -1,7 +1,7 @@
 # learning_DL_with_Kreas
  Learning deeplearning with Keras
 
-# Anaconda 환경 설정
+# Anaconda 환경 설정(CPU)
  1. Anaconda 설치<br/>
  2. 새 가상 환경 생성<br/>
  ```
@@ -22,3 +22,6 @@ conda create --name="환경이름" python=3.6
 cd "폴더경로"
 python "py파일 이름"
  ```
+
+ # Anaconda 환경 설정(GPU)
+ 정리 예정<br/>
