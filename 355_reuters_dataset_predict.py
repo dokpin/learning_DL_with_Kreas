@@ -93,8 +93,6 @@ plt.ylabel('Accuracy')
 plt.legend()
 
 plt.show()
-
-
 '''
 model = models.Sequential()
 model.add(layers.Dense(64, activation='relu', input_shape=(10000,)))
@@ -106,16 +104,13 @@ model.compile(optimizer='rmsprop', loss='categorical_crossentropy', metrics=['ac
 model.fit(x_train, one_hot_train_labels,
 							 epochs=9, batch_size=512)
 
-results = model.evaluate(x_test, one_hot_test_labels)
-print('results')
-print(results)
+predictions = model.predict(x_test)
 
+print('predictions[0].shape')
+print(predictions[0].shape)
 
-'''
-import copy
-test_labels_copy = copy.copy(test_labels)
-#np.random.shuffle(test_labels_copy)
-hits_array = np.array(test_labels) == np.array(test_labels_copy)
-print('float(np.sum(hits_array)) / len(test_labels)')
-print(float(np.sum(hits_array)) / len(test_labels))
-'''
+print('np.sum(predictions[0])')
+print(np.sum(predictions[0]))
+
+print('np.argmax(predictions[0])')
+print(np.argmax(predictions[0]))

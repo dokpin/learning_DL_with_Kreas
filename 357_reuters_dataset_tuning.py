@@ -50,10 +50,10 @@ one_hot_test_labels = to_one_hot(test_labels)
 
 from keras import models
 from keras import layers
-'''
+
 model = models.Sequential()
 model.add(layers.Dense(64, activation='relu', input_shape=(10000,)))
-model.add(layers.Dense(64, activation='relu'))
+model.add(layers.Dense(4, activation='relu'))
 model.add(layers.Dense(46, activation='softmax'))
 
 model.compile(optimizer='rmsprop', loss='categorical_crossentropy', metrics=['accuracy'])
@@ -64,7 +64,7 @@ y_val = one_hot_train_labels[:1000]
 partial_y_train = one_hot_train_labels[1000:]
 
 history = model.fit(partial_x_train, partial_y_train,
-							 epochs=20, batch_size=512, validation_data=(x_val, y_val))
+							 epochs=20, batch_size=128, validation_data=(x_val, y_val))
 
 history_dict = history.history
 loss = history_dict['loss']
@@ -93,29 +93,3 @@ plt.ylabel('Accuracy')
 plt.legend()
 
 plt.show()
-
-
-'''
-model = models.Sequential()
-model.add(layers.Dense(64, activation='relu', input_shape=(10000,)))
-model.add(layers.Dense(64, activation='relu'))
-model.add(layers.Dense(46, activation='softmax'))
-
-model.compile(optimizer='rmsprop', loss='categorical_crossentropy', metrics=['accuracy'])
-
-model.fit(x_train, one_hot_train_labels,
-							 epochs=9, batch_size=512)
-
-results = model.evaluate(x_test, one_hot_test_labels)
-print('results')
-print(results)
-
-
-'''
-import copy
-test_labels_copy = copy.copy(test_labels)
-#np.random.shuffle(test_labels_copy)
-hits_array = np.array(test_labels) == np.array(test_labels_copy)
-print('float(np.sum(hits_array)) / len(test_labels)')
-print(float(np.sum(hits_array)) / len(test_labels))
-'''

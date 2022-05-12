@@ -17,9 +17,15 @@ print(len(test_data))
 
 # 데이터 디코딩
 word_index = reuters.get_word_index()
+#for (key, value) in word_index.items():
+#    print(key)
+#    print(value)
+
 reverse_word_index = dict([(value, key) for (key, value) in word_index.items()])
 decoded_newswire = ' '.join([reverse_word_index.get(i - 3, '?') for i in train_data[0]])
 print(decoded_newswire)
 
+print('train_data[0]')
+print(train_data[0])
 print('train_labels[0]')
 print(train_labels[0])
