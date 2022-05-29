@@ -1,5 +1,9 @@
 from keras.datasets import boston_housing
 
+#from tensorflow.keras.datasets import boston_housing
+#from tensorflow.keras import Sequential, models, layers
+#from tensorflow.keras.layers import Conv2D, Flatten, Dense
+
 (train_data, train_targets), (test_data, test_targets) = boston_housing.load_data()
 
 mean = train_data.mean(axis=0)
@@ -56,7 +60,7 @@ for i in range(k):
 
     model = build_model()
     history = model.fit(partial_train_data, partial_train_targets,
-                epochs=num_epochs, batch_size=1, verbose=0, validation_data=(val_data, val_targets))
+                epochs=num_epochs, batch_size=1, verbose=1, validation_data=(val_data, val_targets))
     #print(history.history.items())
     mae_history = history.history['val_mean_absolute_error']
     #mae_history = history.history['mean_absolute_error']
